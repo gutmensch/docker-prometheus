@@ -8,7 +8,7 @@ ARG PROM_GID=2060
 USER root
 
 RUN addgroup nogroup \
-  && addgroup -g $PROM_GID prometheus \
+  && addgroup -S -g $PROM_GID prometheus \
   && adduser -G prometheus -s /bin/false -S -H -u $PROM_UID prometheus \
   && sh -c "find / -user nobody -exec chown ${PROM_UID}:${PROM_GID} {} \; || true"
 
